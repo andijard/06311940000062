@@ -1,0 +1,93 @@
+<html>
+
+<head>
+  <title>Andija Rahman Dzikra - 06311940000062</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+  <div>
+    <canvas id="myChart" width="900" height="900"
+      style="display: block; box-sizing: border-box; height: 600px; width: 600px;"></canvas>
+  </div>
+
+  <script>
+
+    const data = {
+      labels: [
+        'ATL',
+        'BOS',
+        'CLE',
+        'DAL',
+        'DEN',
+        'HOU',
+        'MEM',
+        'MIA',
+        'MIN',
+        'NOP',
+
+      ],
+
+      datasets: [{
+        label: 'Tim yang Memiliki 2 Atau Lebih Pemain Dibawah Umur 25 dengan Points Per Game > 15 ',
+        data: [3, 2, 2, 2, 2, 3, 2, 2, 4, 2,
+
+        ],
+        backgroundColor: [
+          'rgb(235, 61, 52)',
+          'rgb(235, 97, 28)',
+          'rgb(240, 187, 12)',
+          'rgb(111, 240, 12)',
+          'rgb(12, 240, 194)',
+          'rgb(12, 141, 240)',
+          'rgb(111, 12, 240)',
+          'rgb(229, 12, 240)',
+          'rgb(240, 12, 149)',
+          'rgb(4, 3, 10)',
+        ],
+        hoverOffset: 50
+      }]
+    };
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: {
+          display: true,
+          text: 'Asal Tim Pemain dengan Points Per Game > 15 dan Berumur Di Bawah 25 Tahun'
+        }
+      },
+      animations: {
+        y: {
+          easing: 'easeInOutElastic',
+          from: (ctx) => {
+            if (ctx.type === 'data') {
+              if (ctx.mode === 'default' && !ctx.dropped) {
+                ctx.dropped = true;
+                return 0;
+              }
+              
+            }
+          },
+          delay : 1000,
+          duration: 2000
+        }
+      }
+    }
+
+    const config = {
+      type: 'doughnut',
+      data: data,
+      options: options
+    };
+
+
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+</body>
+
+</html>
